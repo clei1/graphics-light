@@ -22,6 +22,8 @@ color get_lighting( double *normal, double *view, color alight, double light[2][
   i.green = a.green + d.green + s.green;
   i.blue = a.blue + d.blue + s.blue;
 
+  limit_color(&i);
+    
   return i;
 }
 
@@ -65,7 +67,6 @@ color calculate_specular(double light[2][3], double *sreflect, double *view, dou
   return s;
 }
 
-
 //limit each component of c to a max of 255
 void limit_color( color * c ) {
   if(c->red > 255){
@@ -76,6 +77,15 @@ void limit_color( color * c ) {
   }
   if(c->green > 255){
     c->green = 255;
+  }
+  if(c->red < 0){
+    c->red = 0;
+  }
+  if(c->blue < 0){
+    c->blue = 0;
+  }
+  if(c->green < 0){
+    c->green = 0;
   }
 }
 

@@ -28,3 +28,5 @@ z 5
 torus
 0 0 0 40 125
 display
+save
+robot.png
